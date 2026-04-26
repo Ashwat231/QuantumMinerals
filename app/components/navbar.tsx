@@ -2,10 +2,16 @@
 import {useState} from "react";
 import Image from "next/image"
 import Link from "next/link"
+import Dialog from "./dialog"
 
 export function Navbar() {
 
     const [open, setOpen] = useState(false);
+    const [dialogOpen, setDialogOpen] = useState(false);
+
+    const handleDialog = () => {
+      setDialogOpen((x) => !x);
+    };
 
     return(
     /* Navigation */
@@ -31,34 +37,34 @@ export function Navbar() {
 
         {/* Services Dropdown */}
         <div className="relative group">
-            <button className="hover:text-black">Services</button>
+            <button onClick={handleDialog} className="hover:text-black cursor-pointer">Services</button>
             <div className="absolute left-0 mt-3 w-48 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
-            <a href="#" className="block px-4 py-3 hover:bg-gray-50 hover:text-black border-b border-gray-100">Minerals</a>
-            <a href="#" className="block px-4 py-3 hover:bg-gray-50 hover:text-black border-b border-gray-100">Process Improvement</a>
-            <a href="#" className="block px-4 py-3 hover:bg-gray-50 hover:text-black">Productivity Improvement</a>
-            <a href="#" className="block px-4 py-3 hover:bg-gray-50 hover:text-black">Global Logistics</a>
-            <a href="#" className="block px-4 py-3 hover:bg-gray-50 hover:text-black">Mining</a>
-            <a href="#" className="block px-4 py-3 hover:bg-gray-50 hover:text-black">Ore</a>
-            <a href="#" className="block px-4 py-3 hover:bg-gray-50 hover:text-black">Supply Chain</a>
-            <a href="#" className="block px-4 py-3 hover:bg-gray-50 hover:text-black">Catalyst</a>
-            <a href="#" className="block px-4 py-3 hover:bg-gray-50 hover:text-black">Energy</a>
-            <a href="#" className="block px-4 py-3 hover:bg-gray-50 hover:text-black">Sustainability</a>
-            <a href="#" className="block px-4 py-3 hover:bg-gray-50 hover:text-black">Time to Market</a>
-            <a href="#" className="block px-4 py-3 hover:bg-gray-50 hover:text-black">Strategy</a>
+            <button onClick={handleDialog} className="block w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-black border-b border-gray-100 cursor-pointer">Minerals</button>
+            <button onClick={handleDialog} className="block w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-black border-b border-gray-100 cursor-pointer">Process Improvement</button>
+            <button onClick={handleDialog} className="block w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-black cursor-pointer">Productivity Improvement</button>
+            <button onClick={handleDialog} className="block w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-black cursor-pointer">Global Logistics</button>
+            <button onClick={handleDialog} className="block w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-black cursor-pointer">Mining</button>
+            <button onClick={handleDialog} className="block w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-black cursor-pointer">Ore</button>
+            <button onClick={handleDialog} className="block w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-black cursor-pointer">Supply Chain</button>
+            <button onClick={handleDialog} className="block w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-black cursor-pointer">Catalyst</button>
+            <button onClick={handleDialog} className="block w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-black cursor-pointer">Energy</button>
+            <button onClick={handleDialog} className="block w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-black cursor-pointer">Sustainability</button>
+            <button onClick={handleDialog} className="block w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-black cursor-pointer">Time to Market</button>
+            <button onClick={handleDialog} className="block w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-black cursor-pointer">Strategy</button>
             </div>
         </div>
 
         {/* Learning Dropdown */}
         <div className="relative group">
-            <button className="hover:text-black">Learning</button>
+            <button onClick={handleDialog} className="hover:text-black cursor-pointer">Learning</button>
             <div className="absolute left-0 mt-3 w-48 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
-            <a href="#" className="block px-4 py-3 hover:bg-gray-50 hover:text-black border-b border-gray-100">Awareness</a>
-            <a href="#" className="block px-4 py-3 hover:bg-gray-50 hover:text-black border-b border-gray-100">Certification</a>
-            <a href="#" className="block px-4 py-3 hover:bg-gray-50 hover:text-black border-b border-gray-100">Standardization</a>
-            <a href="#" className="block px-4 py-3 hover:bg-gray-50 hover:text-black">Community Awareness</a>
-            <a href="#" className="block px-4 py-3 hover:bg-gray-50 hover:text-black">Government Awareness</a>
-            <a href="#" className="block px-4 py-3 hover:bg-gray-50 hover:text-black">Market Awareness</a>
-            <a href="#" className="block px-4 py-3 hover:bg-gray-50 hover:text-black">Research</a>
+            <button onClick={handleDialog} className="block w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-black border-b border-gray-100 cursor-pointer">Awareness</button>
+            <button onClick={handleDialog} className="block w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-black border-b border-gray-100 cursor-pointer">Certification</button>
+            <button onClick={handleDialog} className="block w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-black border-b border-gray-100 cursor-pointer">Standardization</button>
+            <button onClick={handleDialog} className="block w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-black cursor-pointer">Community Awareness</button>
+            <button onClick={handleDialog} className="block w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-black cursor-pointer">Government Awareness</button>
+            <button onClick={handleDialog} className="block w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-black cursor-pointer">Market Awareness</button>
+            <button onClick={handleDialog} className="block w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-black cursor-pointer">Research</button>
             
             </div>
         </div>
@@ -68,8 +74,8 @@ export function Navbar() {
             <button className="hover:text-black">Events</button>
             <div className="absolute left-0 mt-3 w-48 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
             <a href="#training" className="block px-4 py-3 hover:bg-gray-50 hover:text-black border-b border-gray-100">Training</a>
-            <a href="#" className="block px-4 py-3 hover:bg-gray-50 hover:text-black border-b border-gray-100">Workshop</a>
-            <a href="#" className="block px-4 py-3 hover:bg-gray-50 hover:text-black border-b border-gray-100">Conferences</a>
+            <button onClick={handleDialog} className="block w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-black border-b border-gray-100 cursor-pointer">Workshop</button>
+            <button onClick={handleDialog} className="block w-full text-left px-4 py-3 hover:bg-gray-50 hover:text-black border-b border-gray-100 cursor-pointer">Conferences</button>
             </div>
         </div>
 
@@ -79,15 +85,20 @@ export function Navbar() {
     </div>
 
         {open && (
-        <div className="md:hidden min-h-screen bg-white border-t text-sm flex flex-col text-center">
-          <a href="#">About Us</a>
-          <a href="/consulting">Schedule Meeting</a>
-          <a href="#">Services</a>
-          <a href="#">Learning</a>
-          <a href="#training">Events</a>
-          <a href="/#contact">Contact Us</a>
+        <div className="md:hidden min-h-screen text-center bg-gradient-to-b from-gray-50 to-white border-t border-gray-200 shadow-lg">
+          <div className="flex flex-col gap-0 py-4">
+            <a href="/" className="px-6 py-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 border-b border-gray-100 transition-colors font-medium">Home</a>
+            <a href="/about" className="px-6 py-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 border-b border-gray-100 transition-colors font-medium">About Us</a>
+            <a href="/consulting" className="px-6 py-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 border-b border-gray-100 transition-colors font-medium">Schedule Meeting</a>
+            <button onClick={handleDialog} className="w-full text-left px-6 py-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 border-b border-gray-100 transition-colors font-medium cursor-pointer">Services</button>
+            <button onClick={handleDialog} className="w-full text-left px-6 py-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 border-b border-gray-100 transition-colors font-medium cursor-pointer">Learning</button>
+            <a href="#training" className="px-6 py-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 border-b border-gray-100 transition-colors font-medium">Events</a>
+            <a href="/#contact" className="px-6 py-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium">Contact Us</a>
+          </div>
         </div>
       )}
+
+      <Dialog isOpen={dialogOpen} onClose={() => setDialogOpen(false)} />
 
     </header>
     )

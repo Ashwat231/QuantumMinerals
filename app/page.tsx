@@ -2,25 +2,30 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import Dialog from './components/dialog';
 
 export default function Home() {
 
   const [currentProgram, setCurrentProgram] = useState(0);
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   const programs = [
     {
       id : 1,
       title: "Pigments I - Clays, Ti02, Silica, and Platy Pigment Barrier Strategy",
       location: "Floyd Hall, D-109, 4601 Campus Drive, Kalamazoo, MI 49008",
-      date: "Day 1 : Tuesday July 21, 2026"
+      date: "Date : Tuesday July 21, 2026",
+      map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2953.119342818029!2d-85.6406768!3d42.2546239!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8817765e61acf013%3A0x4a436cacd4bbb5f!2s4601%20Campus%20Dr%2C%20Kalamazoo%2C%20MI%2049008!5e0!3m2!1sen!2sus!4v1775930133520!5m2!1sen!2sus"
     },
     {
       id : 2,
-      title: "Pigments II - Advanced Colorants and Surface Treatments",
-      location: "Floyd Hall, D-109, 4601 Campus Drive, Kalamazoo, MI 49008",
-      date: "Day 2 : Wednesday July 22, 2026"
+      title: "2026 TAPPI Aqueous Barrier Coating Course",
+      location: " Embassy Suites Atlanta Galleria, 2815 Akers Mill Road SE, Atlanta, GA 30339",
+      date: "Date : Tuesday September 29, 2026",
+      map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6624.469153270517!2d-84.45989110000001!3d33.883612!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f51047fab64ea7%3A0xfdaa4befaddb77cc!2sEmbassy%20Suites%20by%20Hilton%20Atlanta%20Galleria!5e0!3m2!1sen!2sus!4v1777182351750!5m2!1sen!2sus"
     }
-  ]
+
+   ];
 
   const current = programs[currentProgram];
 
@@ -34,6 +39,10 @@ export default function Home() {
     setCurrentProgram((prev) =>
       prev === programs.length - 1 ? 0 : prev + 1
     );
+  };
+
+  const handleDialog = () => {
+    setDialogOpen((x) => !x);
   };
 
 
@@ -135,20 +144,48 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="training" className="px-6 py-20 bg-white">
-        <div className="mx-auto max-w-6xl text-center">
-          <h2 className="text-3xl font-bold text-red-900 mb-4">Upcoming Programs</h2>
-          
-          <h3 className="text-l font-bold mb-6 text-gray-900">1) Pigments I - Clays, Ti02, Silica, and Platy Pigment Barrier Strategy</h3>
-          <p className="text-gray-600">Location : Floyd Hall, D-109, 4601 Campus Drive, Kalamazoo, MI 49008</p>
-          <p className="mt-5 font-bold text-gray-600">Day 1 : Tuesday July 21, 2026</p>
+      <section id="training" className="py-20 bg-gray-50">
+        <div className="mx-auto max-w-6xl">
+          <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">Upcoming Programs</h2>
+          <div className="flex items-center gap-6">
 
-          <button className="bg-blue-600 text-white my-10 px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
-            Register Now
-          </button>
-          <div id="map" className="text-center mb-10" >
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2953.119342818029!2d-85.6406768!3d42.2546239!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8817765e61acf013%3A0x4a436cacd4bbb5f!2s4601%20Campus%20Dr%2C%20Kalamazoo%2C%20MI%2049008!5e0!3m2!1sen!2sus!4v1775930133520!5m2!1sen!2sus"
-            className="w-full max-w-4xl h-96 border-0 rounded-lg mx-auto block"></iframe>
+            {/* Left Arrow */}
+            <button className="text-5xl text-blue-600 hover:text-blue-700 hover:scale-200 transition-all cursor-pointer" onClick={handlePrevious}>
+              &lt;
+            </button>
+            
+            {/* Content Card */}
+            <div className="flex-1 bg-white border-2 border-blue-200 rounded-xl shadow-lg p-10 hover:shadow-xl transition-shadow">
+              
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Event {current.id} : {current.title}</h3>
+              
+              <p className="text-gray-600 mb-3 flex items-center gap-2">
+                <span className="text-blue-600">📍</span>
+                {current.location}
+              </p>
+
+              <p className="text-gray-600 mb-6 flex items-center gap-2">
+                <span className="text-blue-600">📅</span>
+                {current.date}
+              </p>
+              
+              <div id="map" className="rounded-lg overflow-hidden">
+                <iframe 
+                  src={current.map}
+                  className="w-full h-96 border-0">
+                </iframe>
+              </div>
+
+              <button onClick={handleDialog} className="bg-blue-600 cursor-pointer text-white mt-4 px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors mb-6 w-full">
+                Register Now
+              </button>
+            </div>
+            
+            {/* Right Arrow */}
+            <button className="text-5xl text-blue-600 hover:text-blue-700 hover:scale-200 transition-all cursor-pointer" onClick={handleNext}>
+              &gt;
+            </button>
+
           </div>
         </div>
       </section>
@@ -162,15 +199,18 @@ export default function Home() {
             QiMinerals can help you achieve your goals.
           </p>
           <div className="flex gap-4 justify-center">
-            <button className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+            <button onClick={handleDialog} className="bg-blue-600 cursor-pointer text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
               Contact Sales
             </button>
-            <button className="border border-gray-300 text-gray-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
+            <button onClick={handleDialog} className="border border-gray-300 cursor-pointer text-gray-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
               Schedule Demo
             </button>
           </div>
         </div>
       </section>
+
+      <Dialog isOpen={dialogOpen} onClose={() => setDialogOpen(false)} />
+
     </div>
   );
 }
