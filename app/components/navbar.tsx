@@ -12,7 +12,7 @@ export function Navbar() {
     <header className="border-b border-gray-200 bg-gradient-to-r from-gray-50 to-white shadow-sm sticky top-0 z-50">
     <div className="mx-auto flex max-w-6xl items-center justify-between">
 
-        <Link href="#">
+        <Link href="/">
         <Image src="/logo.png" alt="QiMinerals Logo" width={120} height={60} priority unoptimized className="bg-transparent"/>
         </Link>
 
@@ -24,23 +24,16 @@ export function Navbar() {
         </button>
 
         <nav className="hidden md:flex gap-6 text-sm font-medium text-gray-700">
-        <div className="relative group">
-            <button className="hover:text-black">About Us</button>
-            <div className="absolute left-0 mt-3 w-48 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
-            <a href="#" className="block px-4 py-3 hover:bg-gray-50 hover:text-black border-b border-gray-100">Company highlights</a>
-            <a href="#" className="block px-4 py-3 hover:bg-gray-50 hover:text-black border-b border-gray-100">Brand</a>
-            <a href="#" className="block px-4 py-3 hover:bg-gray-50 hover:text-black border-b border-gray-100">Logo</a>
-            <a href="#" className="block px-4 py-3 hover:bg-gray-50 hover:text-black">Expertise</a>
-            <a href="#" className="block px-4 py-3 hover:bg-gray-50 hover:text-black">Clients</a>
-            </div>
-        </div>
+
+        <a href="/">Home</a>
+        <a href="/about" className="hover:text-black">About Us</a>
+        <a href="/consulting">Schedule Meeting</a>
 
         {/* Services Dropdown */}
         <div className="relative group">
             <button className="hover:text-black">Services</button>
             <div className="absolute left-0 mt-3 w-48 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
             <a href="#" className="block px-4 py-3 hover:bg-gray-50 hover:text-black border-b border-gray-100">Minerals</a>
-            <a href="#" className="block px-4 py-3 hover:bg-gray-50 hover:text-black border-b border-gray-100">Consulting</a>
             <a href="#" className="block px-4 py-3 hover:bg-gray-50 hover:text-black border-b border-gray-100">Process Improvement</a>
             <a href="#" className="block px-4 py-3 hover:bg-gray-50 hover:text-black">Productivity Improvement</a>
             <a href="#" className="block px-4 py-3 hover:bg-gray-50 hover:text-black">Global Logistics</a>
@@ -80,18 +73,19 @@ export function Navbar() {
             </div>
         </div>
 
-        <a href="#contact" className="hover:text-black">Contact Us</a>
+        <a href="/#contact" className="hover:text-black">Contact Us</a>
         </nav>
 
     </div>
 
         {open && (
-        <div className="md:hidden bg-white border-t px-6 py-4 space-y-3 text-sm flex flex-col">
+        <div className="md:hidden min-h-screen bg-white border-t text-sm flex flex-col text-center">
           <a href="#">About Us</a>
+          <a href="/consulting">Schedule Meeting</a>
           <a href="#">Services</a>
           <a href="#">Learning</a>
           <a href="#training">Events</a>
-          <a href="#contact">Contact Us</a>
+          <a href="/#contact">Contact Us</a>
         </div>
       )}
 

@@ -1,4 +1,42 @@
+'use client';
+
+import Link from 'next/link';
+import { useState } from 'react';
+
 export default function Home() {
+
+  const [currentProgram, setCurrentProgram] = useState(0);
+
+  const programs = [
+    {
+      id : 1,
+      title: "Pigments I - Clays, Ti02, Silica, and Platy Pigment Barrier Strategy",
+      location: "Floyd Hall, D-109, 4601 Campus Drive, Kalamazoo, MI 49008",
+      date: "Day 1 : Tuesday July 21, 2026"
+    },
+    {
+      id : 2,
+      title: "Pigments II - Advanced Colorants and Surface Treatments",
+      location: "Floyd Hall, D-109, 4601 Campus Drive, Kalamazoo, MI 49008",
+      date: "Day 2 : Wednesday July 22, 2026"
+    }
+  ]
+
+  const current = programs[currentProgram];
+
+  const handlePrevious = () => {
+    setCurrentProgram((prev) =>
+      prev === 0 ? programs.length - 1 : prev - 1 
+    );
+  };
+
+  const handleNext = () => {
+    setCurrentProgram((prev) =>
+      prev === programs.length - 1 ? 0 : prev + 1
+    );
+  };
+
+
   return (
     <div className="min-h-screen bg-white font-sans text-black">
       {/* Hero Section */}
@@ -12,12 +50,12 @@ export default function Home() {
             Join the future of industrial minerals with Quantum Industrial Minerals.
           </p>
           <div className="flex gap-4 justify-center">
-            <button className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
-              Get Started
-            </button>
-            <button className="border border-gray-300 text-gray-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
-              Learn More
-            </button>
+            <Link href="/consulting" className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-block">
+              Schedule A Meet
+            </Link>
+            <Link href="/about" className="border border-gray-300 text-gray-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors inline-block">
+              About Us
+            </Link>
           </div>
         </div>
       </section>
@@ -72,9 +110,9 @@ export default function Home() {
                 Our team of experts brings together decades of experience in mineralogy, quantum physics,
                 and industrial engineering to deliver cutting-edge technologies that transform the industry.
               </p>
-              <button className="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+              <Link href="/about" className="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-block">
                 Our Team
-              </button>
+              </Link>
             </div>
             <div className="bg-white p-8 rounded-lg shadow-lg">
               <h3 className="text-xl font-semibold mb-4">Key Statistics</h3>
@@ -100,6 +138,7 @@ export default function Home() {
       <section id="training" className="px-6 py-20 bg-white">
         <div className="mx-auto max-w-6xl text-center">
           <h2 className="text-3xl font-bold text-red-900 mb-4">Upcoming Programs</h2>
+          
           <h3 className="text-l font-bold mb-6 text-gray-900">1) Pigments I - Clays, Ti02, Silica, and Platy Pigment Barrier Strategy</h3>
           <p className="text-gray-600">Location : Floyd Hall, D-109, 4601 Campus Drive, Kalamazoo, MI 49008</p>
           <p className="mt-5 font-bold text-gray-600">Day 1 : Tuesday July 21, 2026</p>
